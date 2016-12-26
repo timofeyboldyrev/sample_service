@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions  xmlns="http://schemas.xmlsoap.org/wsdl/"  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"  targetNamespace="http://siebel.com/CustomUI"  xmlns:xsd="http://www.w3.org/2001/XMLSchema"  xmlns:tns="http://siebel.com/CustomUI"  xmlns:xsdLocal1="http://www.siebel.com/xml/GetContactInfo" >
+	<types >
+		<xsd:schema  elementFormDefault="qualified"  attributeFormDefault="unqualified"  targetNamespace="http://www.siebel.com/xml/GetContactInfo"  xmlns:xsd="http://www.w3.org/2001/XMLSchema"  xmlns:xsdLocal1="http://www.siebel.com/xml/GetContactInfo" >
+			<xsd:annotation >
+				<xsd:documentation >Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation >
+			</xsd:annotation >
+			<xsd:element  name="Contact"  type="xsdLocal1:Contact" />
+			<xsd:complexType  name="Contact" >
+				<xsd:sequence >
+					<xsd:element  name="Id"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="BirthDate"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="CellularPhone"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="EmailAddress"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+					<xsd:element  name="FirstName"  maxOccurs="1"  minOccurs="1"  type="xsd:string" />
+					<xsd:element  name="HomePhone"  maxOccurs="1"  minOccurs="0"  type="xsd:string" />
+				</xsd:sequence >
+			</xsd:complexType >
+		</xsd:schema >		
+		<xsd:schema  elementFormDefault="qualified"  attributeFormDefault="unqualified"  targetNamespace="http://siebel.com/CustomUI"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+			<xsd:import  namespace="http://www.siebel.com/xml/GetContactInfo" />
+			<xsd:element  name="GetClientInfo_Input" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  name="clientId"  type="xsd:string" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+			<xsd:element  name="GetClientInfo_Output" >
+				<xsd:complexType >
+					<xsd:sequence >
+						<xsd:element  ref="xsdLocal1:Contact" />
+					</xsd:sequence >
+				</xsd:complexType >
+			</xsd:element >
+		</xsd:schema >		
+	</types >
+	<message  name="GetClientInfo_Input" >
+		<part  name="GetClientInfo_Input"  element="tns:GetClientInfo_Input" />
+	</message >
+	<message  name="GetClientInfo_Output" >
+		<part  name="GetClientInfo_Output"  element="tns:GetClientInfo_Output" />
+	</message >
+	<portType  name="GetClientInfo" >
+		<operation  name="GetClientInfo" >
+			<input  message="tns:GetClientInfo_Input" />
+			<output  message="tns:GetClientInfo_Output" />
+		</operation >
+	</portType >	
+	<binding  name="GetClientInfo"  type="tns:GetClientInfo" >
+		<soap:binding  transport="http://schemas.xmlsoap.org/soap/http"  style="document" />
+		<operation  name="GetClientInfo" >
+			<soap:operation  soapAction="document/http://siebel.com/CustomUI:GetClientInfo" />
+			<input >
+				<soap:body  use="literal" />
+			</input >
+			<output >
+				<soap:body  use="literal" />
+			</output >
+		</operation >
+	</binding >	
+	<service  name="spcIntegration" >
+		<port  binding="tns:GetClientInfo"  name="GetClientInfo" >
+			<soap:address location="http://182.88.8.18/eai/start" />
+		</port >
+	</service >
+</definitions >
