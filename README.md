@@ -1,13 +1,13 @@
-  Пример http-сервиса.
-  Задача: написать веб-метод, который возвращает информацию о пользователе из Siebel.
-  Описание метода: метод POST, принимает JSON, отдаёт JSON.
-  Входные параметры:
-1) sessionId - идентификатор вызвавшего пользователя (имеется на фронте после того, как пользователь прошёл авторизацию)
-2) userSiebelId - siebel id пользователя, по которому нужно получить информацию
-  Последовательность действий:
-1) Проверка входных параметров. Все параметры обязательные.
-2) Проверка доступности.
-2.1) Вызвать API сервера авторизации, чтобы убедиться, что срок действия сессии не истёк. А также, чтобы получить список ролей вызывающего.
-2.2) Проверить, что вызвавший метод пользователь имеет роль администратора
-3) Получить информацию из Siebel путём вызова SOAP сервиса.
-4) Возвратить всю информацию, полученную из Siebel.
+Http service example. 
+Task: create http-method, which returns information about some user from Siebel CRM. 
+Method description: POST, consumes JSON. 
+Input parameters:
+1) sessionId - identifier of calling user. Front system has it after user passed the authentication. 
+2) userSiebelId - user's siebel identifier. 
+Steps:
+1) Check inpur parameters. All parameters are required. 
+2) Check of availability. 
+2.1) Call auth-service method to make sure that session validity is not expired. 
+2.2) Make sure that calling user has admin role. 
+3) Get user information from Siebel CRM by calling SOAP method. 
+4) Return information from Siebel. 
