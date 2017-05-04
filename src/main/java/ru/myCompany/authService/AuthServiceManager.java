@@ -22,7 +22,7 @@ public class AuthServiceManager {
     private static final String ADMIN_ROLE = "admin";
     @Autowired
     private HttpApiCaller httpApiCaller;
-    @Autowired @Qualifier(Context.BAEN_URL_AUTH_SERVICE_VALIDATE)
+    @Autowired @Qualifier(Context.BEAN_URL_AUTH_SERVICE_VALIDATE)
     private URL authServiceUrl;
 
     public List<String> validateAndGetRoles(String sessionId) {
