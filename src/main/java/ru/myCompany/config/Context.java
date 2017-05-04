@@ -18,13 +18,13 @@ import java.util.function.Supplier;
 @ComponentScan("ru.myCompany")
 public class Context {
 
-    public static final String BAEN_URL_AUTH_SERVICE_VALIDATE = "url.auth-service.validate";
+    public static final String BEAN_URL_AUTH_SERVICE_VALIDATE = "url.auth-service.validate";
     public static final String BEAN_URL_SIEBEL_GET_CLIENT_INFO = "url.siebel.getClientInfo";
     private static final String PARAMETER_AUTH_SERVICE_ADDRESS = "auth-service.address";
     private static final String PARAMETER_AUTH_SERVICE_VALIDATE = "auth-service.validate";
     private static final String PARAMETER_SIEBEL_GET_CLIENT_INFO_URL = "siebel.getClientInfo.url";
 
-    @Bean @Qualifier(BAEN_URL_AUTH_SERVICE_VALIDATE)
+    @Bean @Qualifier(BEAN_URL_AUTH_SERVICE_VALIDATE)
     public URL urlAuthServiceValidate(
             @Value("${" + PARAMETER_AUTH_SERVICE_ADDRESS + "}") String authServiceAddress,
             @Value("${" + PARAMETER_AUTH_SERVICE_VALIDATE + "}") String validateMethod) throws MalformedURLException {
