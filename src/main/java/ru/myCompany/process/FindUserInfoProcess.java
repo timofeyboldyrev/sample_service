@@ -43,10 +43,14 @@ public class FindUserInfoProcess implements Process<GetClientInfoOutput> {
 
     private void checkInput() {
         log.trace("Check input parameters...");
-        Objects.requireNonNull(request, getExceptionText("request"));
-        Objects.requireNonNull(request.getSessionId(), getExceptionText("sessionId"));
-        Objects.requireNonNull(request.getUserSiebelId(), getExceptionText("userSiebelId"));
+        checkParameter(request, "request");
+        checkParameter(request.getSessionId(), "sessionId");
+        checkParameter(request.getUserSiebelId(), "userSiebelId");
         log.trace("Input parameters was checked");
+    }
+
+    private void checkParameter(Object parameter, String parameterName) {
+        Objects.requireNonNull(parameter, getExceptionText(parameterName));
     }
 
     private Supplier<String> getExceptionText(String parameterName) {
